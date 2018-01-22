@@ -1,0 +1,120 @@
+<?php
+
+namespace App\Http\Controllers\Backend;
+
+use App\Models\Checkin;
+use App\Models\Kamar;
+use App\Models\TransaksiDetail;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class CheckinController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $model = Checkin::where('status','0')->orderBy('tgl','desc')->get();
+        return view('backend.checkin.manage',[
+            'model'=>$model
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $model = new Checkin();
+        return view('backend.checkin.form',['model'=>$model]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $kamar = Kamar::find($request->kamar_id);
+
+        $model = new Checkin();
+        $model->user_id = \Auth::user()->id;
+        $model->tamu_id = $request->tamu_id;
+        $model->tgl = date('Y-m-d');
+        $model->status = 0;
+        $model->save();
+
+        $detail = new TransaksiDetail();
+        $detail->checkin_id = $model->id;
+        $detail->kamar_id = $request->kamar_id;
+        $detail->total = $request->total;
+        $detail->extra_bed = $request->extra;
+        $detail->save();
+
+        $kamar->status = 0;
+        $kamar->save();
+
+        return redirect()->route('backend.checkin.manage');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function check_harga(Request $request)
+    {
+        $model = Kamar::find($request->no_kamar);
+        $total = $request->extrabed == "1" ? $model->harga+$model->extra_bed : $model->harga;
+
+        return $total;
+
+    }
+}
