@@ -72,7 +72,8 @@ class CheckinController extends Controller
      */
     public function show($id)
     {
-        //
+        $model = Checkin::find($id);
+        return view('backend.checkin.detail',['model'=>$model]);
     }
 
     /**

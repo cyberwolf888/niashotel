@@ -67,7 +67,7 @@
                                 </li>
                                 <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Jenis Kelamin</span><br>
-                                    <b>{{ $model->checkin->tamu->status == 1 ? 'Laki-laki' : 'Perempuan' }}</b>
+                                    <b>{{ $model->checkin->tamu->jenis_kelamin == 1 ? 'Laki-laki' : 'Perempuan' }}</b>
                                 </li>
                             </ul>
                         </div>

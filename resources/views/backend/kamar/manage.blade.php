@@ -22,7 +22,7 @@
                                 <th>No</th>
                                 <th>Tipe Kamar</th>
                                 <th>Harga</th>
-                                <th>Extra Ded</th>
+                                <th>Extra Bed</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -32,7 +32,7 @@
                                 <th>No</th>
                                 <th>Tipe Kamar</th>
                                 <th>Harga</th>
-                                <th>Extra Ded</th>
+                                <th>Extra Bed</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>

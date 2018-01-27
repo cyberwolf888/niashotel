@@ -86,7 +86,7 @@
                     </a>
                 </section>
                 <div class="header-title col s3 m3">
-                    <span class="chapter-title">SIE Kedelai</span>
+                    <span class="chapter-title">{{ env('APP_NAME') }}</span>
                 </div>
                 <ul class="right col s9 m3 nav-right-menu">
 
@@ -131,6 +131,9 @@
                 </li>
                 <li class="no-padding @if (str_is('*.checkout.*', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="{{ route('backend.checkout.manage') }}"><i class="material-icons">shopping_cart</i>Check-out</a>
+                </li>
+                <li class="no-padding @if (str_is('*.laporan.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="#"><i class="material-icons">shopping_cart</i>Laporan</a>
                 </li>
                 <li class="no-padding @if (str_is('*.user.*', Route::currentRouteName()))collaps active @endif">
                     <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">perm_identity</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
