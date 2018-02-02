@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::select('checkin_id', \App\Models\Checkin::where('status','0')->join('transaksi_detail','transaksi_detail.checkin_id','=','checkin.id')->pluck('kamar_id','checkin_id'), null,['id'=>'checkin_id']) !!}
+                                    {!! Form::select('checkin_id', \App\Models\Checkin::where('status','0')->join('transaksi_detail','transaksi_detail.checkin_id','=','checkin.id')->pluck('kamar_id','checkin_id'), $kamar_id,['id'=>'checkin_id']) !!}
                                     {!! Form::label('checkin_id', 'Kamar') !!}
                                 </div>
                             </div>
@@ -112,6 +112,7 @@
 
             <div class="col s12 m12 l12">
                 {!! Form::submit('Simpan',['class'=>'waves-effect waves-light btn']) !!}
+                <a class="waves-effect waves-light btn red" href="{{ route('backend.checkout.manage') }}">Back</a>
             </div>
 
         </div>
@@ -132,6 +133,7 @@
                 type:'POST',
                 data: {_token:_token, checkin_id:checkin_id},
                 success: function(data) {
+                    console.log(data);
                     $("#harga").val(data.harga);
                     $("#tgl_checkin").val(data.tgl_checkin);
                     $("#durasi").val(data.durasi);

@@ -20,6 +20,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
+                                <th>No Kamar</th>
                                 <th>Tipe Kamar</th>
                                 <th>Harga</th>
                                 <th>Extra Bed</th>
@@ -30,6 +31,7 @@
                             <tfoot>
                             <tr>
                                 <th>No</th>
+                                <th>No Kamar</th>
                                 <th>Tipe Kamar</th>
                                 <th>Harga</th>
                                 <th>Extra Bed</th>
@@ -38,8 +40,10 @@
                             </tr>
                             </tfoot>
                             <tbody>
+                            <?php $no = 1; ?>
                             @foreach($model as $row)
                                 <tr>
+                                    <td>{{ $no }}</td>
                                     <td>{{ $row->no_kamar }}</td>
                                     <td>{{ $row->type->name }}</td>
                                     <td>Rp. {{ number_format($row->harga,0,',','.') }}</td>
@@ -50,6 +54,7 @@
                                         <a href="{{ url(route('backend.kamar.edit', ['id' => $row->id])) }}" class="btn-floating orange" style="opacity: 1;"><i class="material-icons">mode_edit</i></a>
                                     </td>
                                 </tr>
+                                <?php $no++; ?>
                             @endforeach
                             </tbody>
                         </table>

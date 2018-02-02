@@ -114,24 +114,10 @@
                 </div>
             </div>
             <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
+                @can('admin-access')
                 <li class="no-padding @if (str_is('*.dashboard', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="{{ route('backend.dashboard') }}"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
-                </li>
-                <li class="no-padding @if (str_is('*.type.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.type.manage') }}"><i class="material-icons">store</i>Tipe Kamar</a>
-                </li>
-                <li class="no-padding @if (str_is('*.kamar.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.kamar.manage') }}"><i class="material-icons">store</i>Kamar</a>
-                </li>
-                <li class="no-padding @if (str_is('*.tamu.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.tamu.manage') }}"><i class="material-icons">account_circle</i>Tamu</a>
-                </li>
-                <li class="no-padding @if (str_is('*.checkin.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.checkin.manage') }}"><i class="material-icons">shopping_cart</i>Check-in</a>
-                </li>
-                <li class="no-padding @if (str_is('*.checkout.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.checkout.manage') }}"><i class="material-icons">shopping_cart</i>Check-out</a>
-                </li>
+                </li>            
                 <li class="no-padding @if (str_is('*.laporan.*', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="#"><i class="material-icons">shopping_cart</i>Laporan</a>
                 </li>
@@ -155,6 +141,42 @@
                         {{ csrf_field() }}
                     </form>
                 </li>
+                @endcan
+
+                @can('karyawan-access')
+                <li class="no-padding @if (str_is('*.dashboard', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="{{ route('backend.dashboard') }}"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
+                </li>
+                <li class="no-padding @if (str_is('*.type.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="{{ route('backend.type.manage') }}"><i class="material-icons">store</i>Tipe Kamar</a>
+                </li>
+                <li class="no-padding @if (str_is('*.kamar.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="{{ route('backend.kamar.manage') }}"><i class="material-icons">store</i>Kamar</a>
+                </li>
+                <li class="no-padding @if (str_is('*.tamu.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="{{ route('backend.tamu.manage') }}"><i class="material-icons">account_circle</i>Tamu</a>
+                </li>
+                <li class="no-padding @if (str_is('*.checkin.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="{{ route('backend.checkin.manage') }}"><i class="material-icons">shopping_cart</i>Check-in</a>
+                </li>
+                <li class="no-padding @if (str_is('*.checkout.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="{{ route('backend.checkout.manage') }}"><i class="material-icons">shopping_cart</i>Check-out</a>
+                </li>
+                <li class="no-padding @if (str_is('*.laporan.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="#"><i class="material-icons">shopping_cart</i>Laporan</a>
+                </li>
+                <li class="no-padding @if (str_is('*.profile.*', Route::currentRouteName())) active @endif">
+                    <a class="waves-effect waves-grey" href="{{ route('backend.profile.index') }}"><i class="material-icons">account_circle</i>Profile</a>
+                </li>
+                <li class="no-padding">
+                    <a class="waves-effect waves-grey" href="{{ url('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <i class="material-icons">exit_to_app</i>Sign Out
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                @endcan
             </ul>
             <div class="footer">
                 <p class="copyright">STIKOM Bali ©</p>

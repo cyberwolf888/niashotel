@@ -19,6 +19,7 @@
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Tgl Check-in</th>
                                 <th>Nama Tamu</th>
                                 <th>No Kamar</th>
@@ -28,6 +29,7 @@
                             </thead>
                             <tfoot>
                             <tr>
+                                <th>No</th>
                                 <th>Tgl Check-in</th>
                                 <th>Nama Tamu</th>
                                 <th>No Kamar</th>
@@ -39,12 +41,14 @@
                             <?php $no = 1; ?>
                             @foreach($model as $row)
                                 <tr>
+                                    <td>{{ $no }}</td>
                                     <td>{{ date('d/m/Y',strtotime($row->tgl)) }}</td>
                                     <td>{{ $row->tamu->nama }}</td>
                                     <td>{{ $row->detail->kamar->no_kamar }}</td>
                                     <td>{{ $row->detail->total }}</td>
                                     <td>
                                         <a href="{{ url(route('backend.checkin.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;"><i class="material-icons">subject</i></a>
+                                        <a href="{{ url(route('backend.checkout.create_from_checkin', ['id' => $row->id])) }}" class="btn-floating yellow" style="opacity: 1;"><i class="material-icons">done</i></a>
                                     </td>
                                 </tr>
                                 <?php $no++; ?>

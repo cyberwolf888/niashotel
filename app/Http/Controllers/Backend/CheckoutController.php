@@ -27,10 +27,16 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id=null)
     {
         $model = new Checkout();
-        return view('backend.checkout.form',['model'=>$model]);
+        $kamar_id= null;
+        if($id!=null){
+            $checkin = Checkin::find($id);
+            $kamar_id = $checkin->detail->kamar_id;
+        }
+
+        return view('backend.checkout.form',['model'=>$model,'kamar_id'=>$id]);
     }
 
     /**
@@ -113,6 +119,7 @@ class CheckoutController extends Controller
         $checkin = Checkin::find($request->checkin_id);
         $tgl_checkin = Carbon::createFromFormat('Y-m-d',$checkin->tgl);
         $diff = $tgl_checkin->diffInDays(Carbon::now());
+        $diff = $diff==0 ? 1 : $diff;
         $harga = $checkin->detail->total;
         return response()->json(['harga'=>$harga,'durasi'=>$diff,'total'=>$harga*$diff,'tgl_checkin'=>$tgl_checkin->format('d/m/Y'),'tamu'=>$checkin->tamu]);
     }

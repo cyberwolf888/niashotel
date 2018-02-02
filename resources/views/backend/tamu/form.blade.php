@@ -68,6 +68,7 @@
 
             <div class="col s12 m12 l12">
                 {!! Form::submit('Simpan',['class'=>'waves-effect waves-light btn']) !!}
+                <a class="waves-effect waves-light btn red" href="{{ route('backend.tamu.manage') }}">Back</a>
             </div>
 
         </div>

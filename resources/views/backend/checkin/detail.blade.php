@@ -24,6 +24,10 @@
                                     <b>{{ $model->detail->kamar->no_kamar }}</b>
                                 </li>
                                 <li class="collection-item">
+                                    <span class="grey-text text-lighten-1">Jumlah Tamu</span><br>
+                                    <b>{{ $model->detail->jumlah_tamu }}</b>
+                                </li>
+                                <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Extra Bed</span><br>
                                     <b>{{ $model->detail->extra_bed == 1 ? 'Ya' : 'Tidak' }}</b>
                                 </li>

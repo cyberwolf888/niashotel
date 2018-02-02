@@ -19,6 +19,7 @@
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                             <tr>
+                                <th> No </th>
                                 <th>Tgl Check-in</th>
                                 <th>Tgl Check-out</th>
                                 <th>Nama Tamu</th>
@@ -29,6 +30,7 @@
                             </thead>
                             <tfoot>
                             <tr>
+                                <th> No </th>
                                 <th>Tgl Check-in</th>
                                 <th>Tgl Check-out</th>
                                 <th>Nama Tamu</th>
@@ -41,6 +43,7 @@
                             <?php $no = 1; ?>
                             @foreach($model as $row)
                                 <tr>
+                                    <td>{{ $no }}</td>
                                     <td>{{ date('d/m/Y',strtotime($row->checkin->tgl)) }}</td>
                                     <td>{{ date('d/m/Y',strtotime($row->tgl)) }}</td>
                                     <td>{{ $row->checkin->tamu->nama }}</td>

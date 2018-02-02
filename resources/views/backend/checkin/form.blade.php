@@ -39,6 +39,12 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    {!! Form::number('jumlah_tamu', 0,['id'=>'jumlah_tamu', 'min'=>'0']) !!}
+                                    {!! Form::label('jumlah_tamu', 'Jumlah Tamu', ['data-error' => 'wrong','data-success'=>'right']) !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
                                     {!! Form::select('extra', [1=>'Ya',0=>'Tidak'], 0,['id'=>'extra']) !!}
                                     {!! Form::label('extra', 'Extra Bed') !!}
                                 </div>
@@ -56,6 +62,7 @@
 
             <div class="col s12 m12 l12">
                 {!! Form::submit('Simpan',['class'=>'waves-effect waves-light btn']) !!}
+                <a class="waves-effect waves-light btn red" href="{{ route('backend.checkin.manage') }}">Back</a>
             </div>
 
         </div>

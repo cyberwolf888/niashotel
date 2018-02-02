@@ -55,6 +55,7 @@ class CheckinController extends Controller
         $detail->checkin_id = $model->id;
         $detail->kamar_id = $request->kamar_id;
         $detail->total = $request->total;
+        $detail->jumlah_tamu = $request->jumlah_tamu;
         $detail->extra_bed = $request->extra;
         $detail->save();
 

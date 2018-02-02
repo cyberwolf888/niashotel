@@ -95,6 +95,7 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+        $user->email = $request->email;
         $user->name = $request->fullname;
         $user->phone = $request->phone;
         $user->isActive = $request->status == 'on' ? 1 : 0;
@@ -189,6 +190,7 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+        $user->email = $request->email;
         $user->name = $request->fullname;
         $user->phone = $request->phone;
         $user->isActive = $request->status == 'on' ? 1 : 0;

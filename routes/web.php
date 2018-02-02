@@ -88,6 +88,7 @@ Route::group(['prefix' => 'backend', 'middleware' => ['auth','role:admin-access|
     Route::group(['prefix' => 'checkout', 'as'=>'.checkout'], function() {
         Route::get('/', 'Backend\CheckoutController@index')->name('.manage');
         Route::get('/create', 'Backend\CheckoutController@create')->name('.create');
+        Route::get('/create/{id}', 'Backend\CheckoutController@create')->name('.create_from_checkin');
         Route::post('/create', 'Backend\CheckoutController@store')->name('.store');
         Route::get('/edit/{id}', 'Backend\CheckoutController@edit')->name('.edit');
         Route::post('/edit/{id}', 'Backend\CheckoutController@update')->name('.update');
