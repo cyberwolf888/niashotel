@@ -53,6 +53,10 @@ class CheckoutController extends Controller
         $model->tgl = date('Y-m-d');
         $model->keterangan = $request->keterangan;
         $model->status = 1;
+        $model->tax = $request->tax;
+        $model->service = $request->service;
+        $model->diskon = $request->diskon;
+        $model->subtotal = $request->subtotal;
         $model->total = $request->total;
         $model->save();
 

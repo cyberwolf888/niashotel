@@ -1,6 +1,7 @@
 @extends('layouts.backend')
 
 @push('plugin_css')
+    <link href="{{ url('assets/backend') }}/plugins/select2/css/select2.css" rel="stylesheet" type="text/css"/>
 @endpush
 
 @section('content')
@@ -26,9 +27,11 @@
                     <div class="card-content">
                         <div class="row">
                             <div class="row">
-                                <div class="input-field col s12">
-                                    {!! Form::select('tamu_id', \App\Models\Tamu::pluck('nama','id'), $model->tamu_id) !!}
-                                    {!! Form::label('tamu_id', 'Tamu') !!}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tamu</label>
+                                    <div class="col-sm-8">
+                                        {!! Form::select('tamu_id', \App\Models\Tamu::pluck('nama','id'), $model->tamu_id,['id'=>'tamu_id']) !!}
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -71,10 +74,12 @@
 @endsection
 
 @push('plugin_scripts')
+    <script src="{{ url('assets/backend') }}/plugins/select2/js/select2.min.js"></script>
 @endpush
 
 @push('scripts')
     <script>
+        $("#tamu_id").select2({width: '100%'});
         var _token = $("input[name='_token']").val();
 
         function check_harga(no_kamar) {

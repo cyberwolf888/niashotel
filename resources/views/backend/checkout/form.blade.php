@@ -51,6 +51,30 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    {!! Form::number('subtotal', 0,['id'=>'subtotal','readonly'=>'', 'min'=>'0']) !!}
+                                    {!! Form::label('subtotal', 'Sub Total', ['data-error' => 'wrong','data-success'=>'right']) !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    {!! Form::number('tax', 0,['id'=>'tax','readonly'=>'', 'min'=>'0']) !!}
+                                    {!! Form::label('tax', 'Pajak (10%)', ['data-error' => 'wrong','data-success'=>'right']) !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    {!! Form::number('service', 0,['id'=>'service','readonly'=>'', 'min'=>'0']) !!}
+                                    {!! Form::label('service', 'Service (7%)', ['data-error' => 'wrong','data-success'=>'right']) !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    {!! Form::number('diskon', 0,['id'=>'diskon', 'min'=>'1']) !!}
+                                    {!! Form::label('diskon', 'Diskon (%)', ['data-error' => 'wrong','data-success'=>'right']) !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
                                     {!! Form::number('total', 0,['id'=>'total','readonly'=>'', 'min'=>'0']) !!}
                                     {!! Form::label('total', 'Total', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
@@ -126,7 +150,7 @@
 @push('scripts')
     <script>
         var _token = $("input[name='_token']").val();
-
+        var total = parseInt($("#total").val());
         function get_total(checkin_id) {
             $.ajax({
                 url: "<?= route('backend.checkout.get_total') ?>",
@@ -137,7 +161,11 @@
                     $("#harga").val(data.harga);
                     $("#tgl_checkin").val(data.tgl_checkin);
                     $("#durasi").val(data.durasi);
-                    $("#total").val(data.total);
+                    $("#subtotal").val(data.total);
+                    $("#tax").val(data.total*10/100);
+                    $("#service").val(data.total*7/100);
+                    $("#total").val(parseInt($("#subtotal").val())+parseInt($("#tax").val())+parseInt($("#service").val()));
+                    total = parseInt($("#total").val());
 
                     $("#nama").val(data.tamu.nama);
                     $("#alamat").val(data.tamu.alamat);
@@ -148,6 +176,14 @@
                 }
             });
         }
+        $("#diskon").change(function () {
+            var diskon = parseInt($("#diskon").val());
+            if(diskon != ""){
+                var _diskon = total*diskon/100;
+                $("#total").val(total-_diskon);
+            }
+
+        });
         $(document).ready(function () {
             var checkin_id = $("#checkin_id").val();
             get_total(checkin_id);
