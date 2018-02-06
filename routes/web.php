@@ -108,7 +108,7 @@ Route::group(['prefix' => 'backend', 'middleware' => ['auth','role:admin-access|
             Route::post('/edit/{id}', 'Backend\UserController@update_admin')->name('.update');
         });
 
-        //Member
+        //Karyawan
         Route::group(['prefix' => 'karyawan', 'as'=>'.karyawan'], function() {
             Route::get('/', 'Backend\UserController@karyawan')->name('.manage');
             Route::get('/create', 'Backend\UserController@create_karyawan')->name('.create');
@@ -119,10 +119,10 @@ Route::group(['prefix' => 'backend', 'middleware' => ['auth','role:admin-access|
 
     });
 
-    //Report
-    Route::group(['prefix' => 'report', 'as'=>'.report'], function() {
-        Route::get('/', 'Backend\ReportController@index')->name('.index');
-        Route::post('/transaction', 'Backend\ReportController@transaction')->name('.transaction');
+    //Laporan
+    Route::group(['prefix' => 'laporan', 'as'=>'.laporan'], function() {
+        Route::get('/', 'Backend\LaporanController@index')->name('.index');
+        Route::post('/result', 'Backend\LaporanController@result')->name('.result');
     });
 
 

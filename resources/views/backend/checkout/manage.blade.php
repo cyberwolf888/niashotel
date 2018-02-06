@@ -48,7 +48,7 @@
                                     <td>{{ date('d/m/Y',strtotime($row->tgl)) }}</td>
                                     <td>{{ $row->checkin->tamu->nama }}</td>
                                     <td>{{ $row->checkin->detail->kamar->no_kamar }}</td>
-                                    <td>{{ $row->total }}</td>
+                                    <td>{{ number_format($row->total,0,',','.') }}</td>
                                     <td>
                                         <a href="{{ url(route('backend.checkout.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;"><i class="material-icons">subject</i></a>
                                     </td>

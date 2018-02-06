@@ -4,7 +4,7 @@
 @endpush
 
 @section('content')
-    {!! Form::open(['route' => 'backend.report.transaction', 'method' => 'post']) !!}
+    {!! Form::open(['route' => 'backend.laporan.result', 'method' => 'post']) !!}
     <main class="mn-inner">
         <div class="row">
             <div class="col s12">
@@ -33,17 +33,6 @@
                                 <div class=" col s4">
                                     {!! Form::label('end_date', 'End Date', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                     {!! Form::text('end_date',null,['class'=>'datepicker','required'=>'true']) !!}
-                                </div>
-                                <div class="col s4">
-                                    {!! Form::label('status', 'Status') !!}
-                                    {!! Form::select('status', [
-                                                                        '6'=>'All Status',
-                                                                        '0'=>'Canceled',
-                                                                        '1'=>'Menunggu Pembayaran',
-                                                                        '3'=>'Pesanan Sedang Diproses',
-                                                                        '5'=>'Complete Order'
-                                                                    ], null) !!}
-
                                 </div>
                             </div>
                             <div class="row">

@@ -20,11 +20,11 @@
                     <div class="card-content">
                         <div class="card-options">
                             <ul>
-                                <li class="red-text"><span class="badge cyan lighten-1">{{ $count }}</span></li>
+                                <li class="red-text"><span class="badge cyan lighten-1">{{ 12 }}</span></li>
                             </ul>
                         </div>
                         <span class="card-title">Total</span>
-                        <span class="stats-counter">Rp <span class="">{{ number_format($total,0,',','.') }}</span></span>
+                        <span class="stats-counter">Rp <span class="">{{ number_format(12,0,',','.') }}</span></span>
                     </div>
                     <div class="progress stats-card-progress">
                         <div class="determinate" style="width: 100%"></div>
@@ -39,43 +39,55 @@
             <div class="col s12 m12 l12">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Report Periode {{ date('d F Y',strtotime($start_date)) }} - {{ date('d F Y',strtotime($end_date)) }}</span>
+                        <span class="card-title">Laporan Periode {{ date('d F Y',strtotime($start_date)) }} - {{ date('d F Y',strtotime($end_date)) }}</span>
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Phone</th>
+                                <th>Nama Tamu</th>
+                                <th>Tanggal</th>
+                                <th>Durasi</th>
+                                <th>Harga</th>
+                                <th>Extra Bed</th>
+                                <th>Sub Total</th>
+                                <th>Pajak</th>
+                                <th>Service</th>
+                                <th>Diskon</th>
                                 <th>Total</th>
-                                <th>Status</th>
-                                <th>Created Date</th>
-                                <th>Action</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Phone</th>
+                                <th>Nama Tamu</th>
+                                <th>Tanggal</th>
+                                <th>Durasi</th>
+                                <th>Harga</th>
+                                <th>Extra Bed</th>
+                                <th>Sub Total</th>
+                                <th>Pajak</th>
+                                <th>Service</th>
+                                <th>Diskon</th>
                                 <th>Total</th>
-                                <th>Status</th>
-                                <th>Created Date</th>
-                                <th>Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
+                            <?php $no = 1; ?>
                             @foreach($model as $row)
                                 <tr>
-                                    <td>{{ $row->id }}</td>
-                                    <td>{{ $row->fullname }}</td>
-                                    <td>{{ $row->phone }}</td>
+                                    <td>{ $no }}</td>
+                                    <td>{{ $row->nama }}</td>
+                                    <td>{{ date("d/m/Y",strtotime($row->tgl_checkin)) }} - {{ date("d/m/Y",strtotime($row->tgl_checkout)) }}</td>
+                                    <td>{{ 1 }}</td>
+                                    <td>{{ 'Rp '.number_format($row->harga,0,',','.') }}</td>
+                                    <td>{{ $row->extra_bed == 1 ? 'Ya' : 'Tidak' }}</td>
+                                    <td>{{ 'Rp '.number_format($row->subtotal,0,',','.') }}</td>
+                                    <td>{{ 'Rp '.number_format($row->tax,0,',','.') }}</td>
+                                    <td>{{ 'Rp '.number_format($row->service,0,',','.') }}</td>
+                                    <td>{{ $row->diskon }}</td>
                                     <td>{{ 'Rp '.number_format($row->total,0,',','.') }}</td>
-                                    <td>{{ $row->getStatus($row->status) }}</td>
-                                    <td>{{ date("d M Y, H:i",strtotime($row->created_at)) }}</td>
-                                    <td>
-                                        <a href="{{ url(route('backend.transaction.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;"><i class="material-icons">subject</i></a>
-                                    </td>
                                 </tr>
+                                <?php $no++; ?>
                             @endforeach
                             </tbody>
                         </table>
