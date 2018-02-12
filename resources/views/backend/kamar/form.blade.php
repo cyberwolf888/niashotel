@@ -34,25 +34,25 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::number('no_kamar', $model->no_kamar,['class'=>'validate','required'=>'','aria-required'=>'true','min'=>'0']) !!}
+                                    {!! Form::text('no_kamar', $model->no_kamar,['class'=>'validate','required'=>'','aria-required'=>'true','min'=>'1']) !!}
                                     {!! Form::label('no_kamar', 'No Kamar', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::number('harga', $model->harga,['class'=>'validate','required'=>'','aria-required'=>'true','min'=>'0']) !!}
+                                    {!! Form::number('harga', $model->harga,['class'=>'validate','required'=>'','aria-required'=>'true','min'=>'1']) !!}
                                     {!! Form::label('harga', 'Harga', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::number('extra_bed', $model->extra_bed,['class'=>'validate','required'=>'','aria-required'=>'true','min'=>'0']) !!}
+                                    {!! Form::number('extra_bed', $model->extra_bed,['class'=>'validate','required'=>'','aria-required'=>'true','min'=>'1']) !!}
                                     {!! Form::label('extra_bed', 'Harga Extra Bed', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::select('status', ['1'=>'Available','0'=>'Unavailable'], $model->available) !!}
+                                    {!! Form::select('status', ['1'=>'Available','0'=>'Unavailable'], $model->status) !!}
                                     {!! Form::label('status', 'Status') !!}
                                 </div>
                             </div>

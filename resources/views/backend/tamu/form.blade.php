@@ -33,6 +33,12 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    {!! Form::select('citizen', ['1'=>'WNI','2'=>'WNA'], $model->citizen) !!}
+                                    {!! Form::label('citizen', 'Kewarganegaraan') !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
                                     {!! Form::text('alamat', $model->alamat,['class'=>'validate','required'=>'','aria-required'=>'true','min'=>'0']) !!}
                                     {!! Form::label('alamat', 'Alamat', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
@@ -57,7 +63,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::select('jenis_kelamin', ['1'=>'Laki-laki','2'=>'Perempuan'], $model->available) !!}
+                                    {!! Form::select('jenis_kelamin', ['1'=>'Laki-laki','2'=>'Perempuan'], $model->jenis_kelamin) !!}
                                     {!! Form::label('jenis_kelamin', 'Jenis Kelamain') !!}
                                 </div>
                             </div>

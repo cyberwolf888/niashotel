@@ -12,4 +12,5 @@ class Checkout extends Model
     {
         return $this->belongsTo('App\Models\Checkin','checkin_id');
     }
+
 }

@@ -19,11 +19,11 @@
                     <div class="card-content">
                         <div class="card-options">
                             <ul>
-                                <li class="red-text"><span class="badge cyan lighten-1">netto</span></li>
+                                <li class="red-text"><span class="badge cyan lighten-1">BRUTO</span></li>
                             </ul>
                         </div>
-                        <span class="card-title">Sales</span>
-                        <span class="stats-counter">Rp <span class="">0</span><small>This week</small></span>
+                        <span class="card-title">PENDAPATAN</span>
+                        <span class="stats-counter">Rp <span class="">{{ number_format($sales,0,',','.') }}</span><small>Bulan Ini</small></span>
                     </div>
                     <div class="progress stats-card-progress">
                         <div class="determinate" style="width: 100%"></div>
@@ -38,8 +38,8 @@
                                 <li><a href="javascript:void(0)"><i class="material-icons">more_vert</i></a></li>
                             </ul> -->
                         </div>
-                        <span class="card-title">New Member</span>
-                        <span class="stats-counter"><span class="counter">0</span><small>This month</small></span>
+                        <span class="card-title">Jumlah Checkin</span>
+                        <span class="stats-counter"><span class="counter">{{ $jumlah_checkin }}</span><small>Bulan Ini</small></span>
                     </div>
                     <div class="progress stats-card-progress">
                         <div class="determinate" style="width: 100%"></div>
@@ -49,8 +49,8 @@
             <div class="col s12 m12 l4">
                 <div class="card stats-card">
                     <div class="card-content">
-                        <span class="card-title">Total Transaction</span>
-                        <span class="stats-counter"><span class="counter">0</span><small>This week</small></span>
+                        <span class="card-title">Jumlah Tamu</span>
+                        <span class="stats-counter"><span class="counter">{{ $jumlah_tamu }}</span><small>Bulan Ini</small></span>
                     </div>
                     <div class="progress stats-card-progress">
                         <div class="determinate" style="width: 100%"></div>
@@ -81,7 +81,12 @@
 @push('scripts')
     <script>
         $( document ).ready(function() {
-
+            new Chartist.Bar('.ct-chart-distributed', {
+                labels: <?= $labels ?>,
+                series: <?= $series ?>
+            }, {
+                distributeSeries: true
+            });
 
             // CounterUp Plugin
             $('.counter').each(function () {

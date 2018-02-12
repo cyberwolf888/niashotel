@@ -69,7 +69,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::number('diskon', 0,['id'=>'diskon', 'min'=>'1']) !!}
+                                    {!! Form::number('diskon', 0,['id'=>'diskon', 'min'=>'0']) !!}
                                     {!! Form::label('diskon', 'Diskon (%)', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
                             </div>

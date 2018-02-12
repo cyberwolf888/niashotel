@@ -16,7 +16,7 @@
 Auth::routes();
 
 Route::get('/', function () {
-    //return view('frontend.home');
+    return redirect()->route('login');
 })->name('home');
 
 Route::get('/local', 'HomeController@local')->name('frontend.local');
@@ -94,6 +94,7 @@ Route::group(['prefix' => 'backend', 'middleware' => ['auth','role:admin-access|
         Route::post('/edit/{id}', 'Backend\CheckoutController@update')->name('.update');
         Route::get('/detail/{id}', 'Backend\CheckoutController@show')->name('.show');
         Route::post('/get-total', 'Backend\CheckoutController@get_total')->name('.get_total');
+        Route::get('/invoice/{id}', 'Backend\CheckoutController@print_invoice')->name('.invoice');
     });
 
     //User

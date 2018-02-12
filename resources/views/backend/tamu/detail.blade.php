@@ -20,6 +20,10 @@
                                     <b>{{ $model->nama }}</b>
                                 </li>
                                 <li class="collection-item">
+                                    <span class="grey-text text-lighten-1">Kewarganegaraan</span><br>
+                                    <b>{{ $model->citizen == 1 ? 'WNI' : 'WNA' }}</b>
+                                </li>
+                                <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Alamat</span><br>
                                     <b>{{ $model->alamat }}</b>
                                 </li>
@@ -37,9 +41,10 @@
                                 </li>
                                 <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Jenis Kelamin</span><br>
-                                    <b>{{ $model->status == 1 ? 'Laki-laki' : 'Perempuan' }}</b>
+                                    <b>{{ $model->jenis_kelamin == 1 ? 'Laki-laki' : 'Perempuan' }}</b>
                                 </li>
                             </ul>
+                            <a class="waves-effect waves-light btn red" href="{{ route('backend.tamu.manage') }}">Back</a>
                         </div>
                     </div>
                 </div>

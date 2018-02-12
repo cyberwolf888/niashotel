@@ -42,7 +42,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::number('jumlah_tamu', 0,['id'=>'jumlah_tamu', 'min'=>'0']) !!}
+                                    {!! Form::number('jumlah_tamu', 1,['id'=>'jumlah_tamu', 'min'=>'1']) !!}
                                     {!! Form::label('jumlah_tamu', 'Jumlah Tamu', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
                             </div>

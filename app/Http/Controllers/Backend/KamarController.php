@@ -16,7 +16,7 @@ class KamarController extends Controller
      */
     public function index()
     {
-        $model = Kamar::all();
+        $model = Kamar::orderBy('no_kamar','ASC')->get();
         return view('backend.kamar.manage',['model'=>$model]);
     }
 
@@ -45,7 +45,7 @@ class KamarController extends Controller
             'type_id' => 'required',
             'harga' => 'required|numeric',
             'extra_bed' => 'required|numeric',
-            'no_kamar' => 'required|numeric',
+            'no_kamar' => 'required',
             'status' => 'required',
         ]);
 
@@ -103,7 +103,7 @@ class KamarController extends Controller
             'type_id' => 'required',
             'harga' => 'required|numeric',
             'extra_bed' => 'required|numeric',
-            'no_kamar' => 'required|numeric',
+            'no_kamar' => 'required',
             'status' => 'required',
         ]);
 

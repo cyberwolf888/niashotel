@@ -25,17 +25,18 @@
                                 </li>
                                 <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Jumlah Tamu</span><br>
-                                    <b>{{ $model->detail->jumlah_tamu }}</b>
+                                    <b>{{ $model->detail->jumlah_tamu }} orang</b>
                                 </li>
                                 <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Extra Bed</span><br>
-                                    <b>{{ $model->detail->extra_bed == 1 ? 'Ya' : 'Tidak' }}</b>
+                                    <b>{{ $model->detail->extra_bed == 1 ? number_format($model->detail->kamar->extra_bed,0,',','.') : '0' }}</b>
                                 </li>
                                 <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Harga per hari</span><br>
                                     <b>{{ number_format($model->detail->total,0,',','.') }}</b>
                                 </li>
                             </ul>
+                            <a class="waves-effect waves-light btn red" href="{{ route('backend.checkin.manage') }}">Back</a>
                         </div>
                     </div>
                 </div>

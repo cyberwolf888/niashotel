@@ -127,4 +127,13 @@ class CheckoutController extends Controller
         $harga = $checkin->detail->total;
         return response()->json(['harga'=>$harga,'durasi'=>$diff,'total'=>$harga*$diff,'tgl_checkin'=>$tgl_checkin->format('d/m/Y'),'tamu'=>$checkin->tamu]);
     }
+
+    public function print_invoice($id)
+    {
+        $model = Checkout::find($id);
+        $tgl_checkin = Carbon::createFromFormat('Y-m-d',$model->checkin->tgl);
+        $diff = $tgl_checkin->diffInDays(Carbon::createFromFormat('Y-m-d',$model->tgl));
+        $diff = $diff==0 ? 1 : $diff;
+        return view('backend.checkout.invoice',['model'=>$model,'durasi'=>$diff]);
+    }
 }

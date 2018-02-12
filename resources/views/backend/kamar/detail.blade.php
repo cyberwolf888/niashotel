@@ -36,6 +36,7 @@
                                     <b>{{ $model->status == 1 ? 'Available' : 'Unavailable' }}</b>
                                 </li>
                             </ul>
+                            <a class="waves-effect waves-light btn red" href="{{ route('backend.kamar.manage') }}">Back</a>
                         </div>
                     </div>
                 </div>

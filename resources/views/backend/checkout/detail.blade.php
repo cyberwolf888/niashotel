@@ -28,14 +28,31 @@
                                     <b>{{ $model->checkin->detail->kamar->no_kamar }}</b>
                                 </li>
                                 <li class="collection-item">
+                                    <span class="grey-text text-lighten-1">Sub Total</span><br>
+                                    <b>{{ number_format($model->subtotal,0,',','.') }}</b>
+                                </li>
+                                <li class="collection-item">
+                                    <span class="grey-text text-lighten-1">Pajak (10%)</span><br>
+                                    <b>{{ number_format($model->tax,0,',','.') }}</b>
+                                </li>
+                                <li class="collection-item">
+                                    <span class="grey-text text-lighten-1">Service (7%)</span><br>
+                                    <b>{{ number_format($model->service,0,',','.') }}</b>
+                                </li>
+                                <li class="collection-item">
+                                    <span class="grey-text text-lighten-1">Diskon</span><br>
+                                    <b>{{ $model->diskon }} %</b>
+                                </li>
+                                <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Total</span><br>
-                                    <b>{{ $model->total }}</b>
+                                    <b>{{ number_format($model->total,0,',','.') }}</b>
                                 </li>
                                 <li class="collection-item">
                                     <span class="grey-text text-lighten-1">Keterangan</span><br>
                                     <b>{{ $model->keterangan }}</b>
                                 </li>
                             </ul>
+                            <a class="waves-effect waves-light btn red" href="{{ route('backend.checkout.manage') }}">Back</a>
                         </div>
                     </div>
                 </div>

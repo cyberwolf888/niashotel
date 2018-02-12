@@ -117,7 +117,13 @@
                 @can('admin-access')
                 <li class="no-padding @if (str_is('*.dashboard', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="{{ route('backend.dashboard') }}"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
-                </li>            
+                </li>
+                    <li class="no-padding @if (str_is('*.type.*', Route::currentRouteName())) active @endif">
+                        <a class="waves-effect waves-grey" href="{{ route('backend.type.manage') }}"><i class="material-icons">store</i>Tipe Kamar</a>
+                    </li>
+                    <li class="no-padding @if (str_is('*.kamar.*', Route::currentRouteName())) active @endif">
+                        <a class="waves-effect waves-grey" href="{{ route('backend.kamar.manage') }}"><i class="material-icons">store</i>Kamar</a>
+                    </li>
                 <li class="no-padding @if (str_is('*.laporan.*', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="{{ route('backend.laporan.index') }}"><i class="material-icons">receipt</i>Laporan</a>
                 </li>
@@ -147,20 +153,15 @@
                 <li class="no-padding @if (str_is('*.dashboard', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="{{ route('backend.dashboard') }}"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
                 </li>
-                <li class="no-padding @if (str_is('*.type.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.type.manage') }}"><i class="material-icons">store</i>Tipe Kamar</a>
-                </li>
-                <li class="no-padding @if (str_is('*.kamar.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.kamar.manage') }}"><i class="material-icons">store</i>Kamar</a>
-                </li>
+
                 <li class="no-padding @if (str_is('*.tamu.*', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="{{ route('backend.tamu.manage') }}"><i class="material-icons">account_circle</i>Tamu</a>
                 </li>
                 <li class="no-padding @if (str_is('*.checkin.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.checkin.manage') }}"><i class="material-icons">call_made</i>Check-in</a>
+                    <a class="waves-effect waves-grey" href="{{ route('backend.checkin.manage') }}"><i class="material-icons">call_received</i>Check-in</a>
                 </li>
                 <li class="no-padding @if (str_is('*.checkout.*', Route::currentRouteName())) active @endif">
-                    <a class="waves-effect waves-grey" href="{{ route('backend.checkout.manage') }}"><i class="material-icons">call_received</i>Check-out</a>
+                    <a class="waves-effect waves-grey" href="{{ route('backend.checkout.manage') }}"><i class="material-icons">call_made</i>Check-out</a>
                 </li>
                 <li class="no-padding @if (str_is('*.laporan.*', Route::currentRouteName())) active @endif">
                     <a class="waves-effect waves-grey" href="{{ route('backend.laporan.index') }}"><i class="material-icons">receipt</i>Laporan</a>

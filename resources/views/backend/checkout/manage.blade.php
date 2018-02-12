@@ -51,6 +51,7 @@
                                     <td>{{ number_format($row->total,0,',','.') }}</td>
                                     <td>
                                         <a href="{{ url(route('backend.checkout.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;"><i class="material-icons">subject</i></a>
+                                        <a href="{{ url(route('backend.checkout.invoice', ['id' => $row->id])) }}" target="_blank" class="btn-floating green" style="opacity: 1;"><i class="material-icons"><i class="material-icons">receipt</i></i></a>
                                     </td>
                                 </tr>
                                 <?php $no++; ?>

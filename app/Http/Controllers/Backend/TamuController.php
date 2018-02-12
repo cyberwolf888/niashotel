@@ -15,7 +15,7 @@ class TamuController extends Controller
      */
     public function index()
     {
-        $model = Tamu::all();
+        $model = Tamu::orderBy('id','DESC')->get();
         return view('backend.tamu.manage',[
             'model'=>$model
         ]);
@@ -51,6 +51,7 @@ class TamuController extends Controller
 
         $model = new Tamu();
         $model->nama = $request->nama;
+        $model->citizen = $request->citizen;
         $model->alamat = $request->alamat;
         $model->hp = $request->hp;
         $model->email = $request->email;
@@ -105,6 +106,7 @@ class TamuController extends Controller
 
         $model = Tamu::find($id);
         $model->nama = $request->nama;
+        $model->citizen = $request->citizen;
         $model->alamat = $request->alamat;
         $model->hp = $request->hp;
         $model->email = $request->email;

@@ -12,26 +12,6 @@
 
 @section('content')
     <main class="mn-inner">
-        <div class="row no-m-t no-m-b">
-            <div class="col s12 m12 l4">
-            </div>
-            <div class="col s12 m12 l4">
-                <div class="card stats-card">
-                    <div class="card-content">
-                        <div class="card-options">
-                            <ul>
-                                <li class="red-text"><span class="badge cyan lighten-1">{{ 12 }}</span></li>
-                            </ul>
-                        </div>
-                        <span class="card-title">Total</span>
-                        <span class="stats-counter">Rp <span class="">{{ number_format(12,0,',','.') }}</span></span>
-                    </div>
-                    <div class="progress stats-card-progress">
-                        <div class="determinate" style="width: 100%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col s12">
                 <div class="page-title">Report Transaction</div>
@@ -74,17 +54,22 @@
                             <tbody>
                             <?php $no = 1; ?>
                             @foreach($model as $row)
+                                <?php
+                                    $tgl_checkin = \Carbon\Carbon::createFromFormat('Y-m-d',$row->tgl_checkin);
+                                    $diff = $tgl_checkin->diffInDays(\Carbon\Carbon::createFromFormat('Y-m-d',$row->tgl_checkout));
+                                    $durasi = $diff==0 ? 1 : $diff;
+                                ?>
                                 <tr>
-                                    <td>{ $no }}</td>
+                                    <td>{{ $no }}</td>
                                     <td>{{ $row->nama }}</td>
                                     <td>{{ date("d/m/Y",strtotime($row->tgl_checkin)) }} - {{ date("d/m/Y",strtotime($row->tgl_checkout)) }}</td>
-                                    <td>{{ 1 }}</td>
+                                    <td>{{ $durasi }} Hari</td>
                                     <td>{{ 'Rp '.number_format($row->harga,0,',','.') }}</td>
                                     <td>{{ $row->extra_bed == 1 ? 'Ya' : 'Tidak' }}</td>
                                     <td>{{ 'Rp '.number_format($row->subtotal,0,',','.') }}</td>
                                     <td>{{ 'Rp '.number_format($row->tax,0,',','.') }}</td>
                                     <td>{{ 'Rp '.number_format($row->service,0,',','.') }}</td>
-                                    <td>{{ $row->diskon }}</td>
+                                    <td>{{ $row->diskon }}%</td>
                                     <td>{{ 'Rp '.number_format($row->total,0,',','.') }}</td>
                                 </tr>
                                 <?php $no++; ?>
