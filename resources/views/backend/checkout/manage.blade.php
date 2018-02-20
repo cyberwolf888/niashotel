@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">Kelola Check-out</span>
-                        <a class="waves-effect waves-light btn" href="{{ url(route('backend.checkout.create')) }}"><i class="material-icons left">open_in_new</i>Tambah Data Baru</a><br>
+                        <!-- <a class="waves-effect waves-light btn" href="{{ url(route('backend.checkout.create')) }}"><i class="material-icons left">open_in_new</i>Tambah Data Baru</a><br> -->
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                             <tr>
@@ -50,8 +50,8 @@
                                     <td>{{ $row->checkin->detail->kamar->no_kamar }}</td>
                                     <td>{{ number_format($row->total,0,',','.') }}</td>
                                     <td>
-                                        <a href="{{ url(route('backend.checkout.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;"><i class="material-icons">subject</i></a>
-                                        <a href="{{ url(route('backend.checkout.invoice', ['id' => $row->id])) }}" target="_blank" class="btn-floating green" style="opacity: 1;"><i class="material-icons"><i class="material-icons">receipt</i></i></a>
+                                        <a href="{{ url(route('backend.checkout.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;" title="Detail"><i class="material-icons">subject</i></a>
+                                        <a href="{{ url(route('backend.checkout.invoice', ['id' => $row->id])) }}" target="_blank" class="btn-floating green" style="opacity: 1;" title="Invoice"><i class="material-icons"><i class="material-icons">receipt</i></i></a>
                                     </td>
                                 </tr>
                                 <?php $no++; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12 Feb 2018 pada 19.18
+-- Generation Time: 15 Feb 2018 pada 06.38
 -- Versi Server: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -259,9 +259,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `password`, `isActive`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'admin@mail.com', '082247464196', '$2y$10$dRhj6fdwxNY2C/iM7Cb9fu4C30pQCNo7vp5TvRg1rKmljjG/M9hR.', 1, 1, 'EHr4L2cVkDpXCKkbNuSCqz1vZHrUQIbZx790GvZvxVi0PFRX2dIxB2fTJJxy', '2018-01-17 21:18:42', '2018-01-20 00:45:50'),
+(1, 'Administrator', 'admin@mail.com', '082247464196', '$2y$10$dRhj6fdwxNY2C/iM7Cb9fu4C30pQCNo7vp5TvRg1rKmljjG/M9hR.', 1, 1, 'CijniJ5qx6gTDkJIFstno2JVVJ3oT5VEORgZXBhWAceJoR47VYnKsV12Svk1', '2018-01-17 21:18:42', '2018-01-20 00:45:50'),
 (2, 'Nias', 'nias@gmail.com', '0837474637', '$2y$10$OAwNl6kAoDP7pQu4XQ.gA.CXhAhasyBXJTc8C3s8jln0JHd7eNoJa', 1, 1, NULL, '2018-01-20 00:33:20', '2018-01-20 00:33:20'),
-(3, 'Karyawan Teladan', 'karyawan@mail.com', '085737343658', '$2y$10$3S9X9MBtUglK9dMc0TnIcuegFWQ2jYMvw5pKqbkFcN7mOarTuM2Zy', 1, 2, 'DKIKdeGz221xOuCt59jeudqXKVtmx5fCCI6XIetfXgVQmh5RsULiaPtez0Hr', '2018-01-20 00:41:44', '2018-01-20 00:42:33');
+(3, 'Karyawan Teladan', 'karyawan@mail.com', '085737343658', '$2y$10$3S9X9MBtUglK9dMc0TnIcuegFWQ2jYMvw5pKqbkFcN7mOarTuM2Zy', 1, 2, '3ayOPQQCxMMTCwKMpc8GSr807Ya7K3UxG7iaA6HGvZ7hk4ziEWO3RZ3I4r85', '2018-01-20 00:41:44', '2018-01-20 00:42:33');
 
 --
 -- Indexes for dumped tables

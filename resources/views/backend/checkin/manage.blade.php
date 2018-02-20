@@ -15,7 +15,15 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">Kelola Check-in</span>
-                        <a class="waves-effect waves-light btn" href="{{ url(route('backend.checkin.create')) }}"><i class="material-icons left">open_in_new</i>Tambah Data Baru</a><br>
+                        <a class="waves-effect waves-light btn" href="{{ url(route('backend.checkin.create')) }}"><i class="material-icons left">open_in_new</i>Tambah Data Baru</a>
+                        @if (!str_is('*.checkin.all', Route::currentRouteName()))
+                            <a class="waves-effect waves-light btn blue" href="{{ url(route('backend.checkin.all')) }}"><i class="material-icons left">view_comfy</i> Tampilkan Semua</a>
+                        @else
+                            <a class="waves-effect waves-light btn red" href="{{ url(route('backend.checkin.manage')) }}"><i class="material-icons left">view_comfy</i> Tampilkan Sedikit</a>
+                        @endif
+
+                        <br>
+
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                             <tr>
@@ -24,6 +32,7 @@
                                 <th>Nama Tamu</th>
                                 <th>No Kamar</th>
                                 <th>Harga</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -34,6 +43,7 @@
                                 <th>Nama Tamu</th>
                                 <th>No Kamar</th>
                                 <th>Harga</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
@@ -46,9 +56,10 @@
                                     <td>{{ $row->tamu->nama }}</td>
                                     <td>{{ $row->detail->kamar->no_kamar }}</td>
                                     <td>{{ number_format($row->detail->total,0,',','.') }}</td>
+                                    <td>{{ $row->status == 1 ? 'Selesai' : 'Proses' }}</td>
                                     <td>
-                                        <a href="{{ url(route('backend.checkin.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;"><i class="material-icons">subject</i></a>
-                                        <a href="{{ url(route('backend.checkout.create_from_checkin', ['id' => $row->id])) }}" class="btn-floating yellow" style="opacity: 1;"><i class="material-icons">done</i></a>
+                                        <a href="{{ url(route('backend.checkin.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;" title="Detail"><i class="material-icons">subject</i></a>
+                                        <a href="{{ url(route('backend.checkout.create_from_checkin', ['id' => $row->id])) }}" class="btn-floating yellow" style="opacity: 1;" title="Checkout"><i class="material-icons">done</i></a>
                                     </td>
                                 </tr>
                                 <?php $no++; ?>

@@ -23,6 +23,14 @@ class CheckinController extends Controller
         ]);
     }
 
+    public function all()
+    {
+        $model = Checkin::orderBy('tgl','desc')->get();
+        return view('backend.checkin.manage',[
+            'model'=>$model
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +39,13 @@ class CheckinController extends Controller
     public function create()
     {
         $model = new Checkin();
-        return view('backend.checkin.form',['model'=>$model]);
+        $_kamar = Kamar::where('status','1')->with('type')->get();
+        $kamar = [];
+        foreach ($_kamar as $k){
+            $label = $k->no_kamar.' - '.$k->type->name;
+            $kamar[$k->id] = $label;
+        }
+        return view('backend.checkin.form',['model'=>$model,'kamar'=>$kamar]);
     }
 
     /**
@@ -115,8 +129,9 @@ class CheckinController extends Controller
     {
         $model = Kamar::find($request->no_kamar);
         $total = $request->extrabed == "1" ? $model->harga+$model->extra_bed : $model->harga;
+        $extra = $request->extrabed == "1" ? $model->extra_bed : 0;
 
-        return $total;
+        return response()->json(['total'=>$total,'extra'=>$extra]);
 
     }
 }

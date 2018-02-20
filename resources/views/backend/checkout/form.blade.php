@@ -162,7 +162,7 @@
                     $("#tgl_checkin").val(data.tgl_checkin);
                     $("#durasi").val(data.durasi);
                     $("#subtotal").val(data.total);
-                    $("#tax").val(data.total*10/100);
+                    $("#tax").val(data.total*15/100);
                     $("#service").val(data.total*7/100);
                     $("#total").val(parseInt($("#subtotal").val())+parseInt($("#tax").val())+parseInt($("#service").val()));
                     total = parseInt($("#total").val());

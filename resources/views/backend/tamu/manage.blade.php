@@ -50,8 +50,8 @@
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->jenis_kelamin == 1 ? 'Laki-laki' : 'Perempuan' }}</td>
                                     <td>
-                                        <a href="{{ url(route('backend.tamu.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;"><i class="material-icons">subject</i></a>
-                                        <a href="{{ url(route('backend.tamu.edit', ['id' => $row->id])) }}" class="btn-floating orange" style="opacity: 1;"><i class="material-icons">mode_edit</i></a>
+                                        <a href="{{ url(route('backend.tamu.show', ['id' => $row->id])) }}" class="btn-floating blue" style="opacity: 1;" title="Detail"><i class="material-icons">subject</i></a>
+                                        <a href="{{ url(route('backend.tamu.edit', ['id' => $row->id])) }}" class="btn-floating orange" style="opacity: 1;" title="Edit"><i class="material-icons">mode_edit</i></a>
                                     </td>
                                 </tr>
                                 <?php $no++; ?>

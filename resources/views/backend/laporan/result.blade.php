@@ -33,7 +33,7 @@
                                 <th>Pajak</th>
                                 <th>Service</th>
                                 <th>Diskon</th>
-                                <th>Total</th>
+                                <th>Grand Total</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -48,7 +48,7 @@
                                 <th>Pajak</th>
                                 <th>Service</th>
                                 <th>Diskon</th>
-                                <th>Total</th>
+                                <th>Grand Total</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -58,6 +58,7 @@
                                     $tgl_checkin = \Carbon\Carbon::createFromFormat('Y-m-d',$row->tgl_checkin);
                                     $diff = $tgl_checkin->diffInDays(\Carbon\Carbon::createFromFormat('Y-m-d',$row->tgl_checkout));
                                     $durasi = $diff==0 ? 1 : $diff;
+                                    $harga_extra = $row->extra_bed == 1 ? \App\Models\Kamar::find($row->kamar_id)->extra_bed : 0;
                                 ?>
                                 <tr>
                                     <td>{{ $no }}</td>
@@ -65,7 +66,7 @@
                                     <td>{{ date("d/m/Y",strtotime($row->tgl_checkin)) }} - {{ date("d/m/Y",strtotime($row->tgl_checkout)) }}</td>
                                     <td>{{ $durasi }} Hari</td>
                                     <td>{{ 'Rp '.number_format($row->harga,0,',','.') }}</td>
-                                    <td>{{ $row->extra_bed == 1 ? 'Ya' : 'Tidak' }}</td>
+                                    <td>{{ 'Rp '.number_format($harga_extra,0,',','.') }}</td>
                                     <td>{{ 'Rp '.number_format($row->subtotal,0,',','.') }}</td>
                                     <td>{{ 'Rp '.number_format($row->tax,0,',','.') }}</td>
                                     <td>{{ 'Rp '.number_format($row->service,0,',','.') }}</td>

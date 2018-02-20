@@ -32,7 +32,7 @@
                                     <b>{{ number_format($model->subtotal,0,',','.') }}</b>
                                 </li>
                                 <li class="collection-item">
-                                    <span class="grey-text text-lighten-1">Pajak (10%)</span><br>
+                                    <span class="grey-text text-lighten-1">Pajak (15%)</span><br>
                                     <b>{{ number_format($model->tax,0,',','.') }}</b>
                                 </li>
                                 <li class="collection-item">

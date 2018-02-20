@@ -36,13 +36,13 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::select('kamar_id', \App\Models\Kamar::where('status','1')->pluck('no_kamar','id'), $model->kamar_id,['id'=>'kamar_id']) !!}
+                                    {!! Form::select('kamar_id', $kamar, $model->kamar_id,['id'=>'kamar_id']) !!}
                                     {!! Form::label('kamar_id', 'Kamar') !!}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {!! Form::number('jumlah_tamu', 1,['id'=>'jumlah_tamu', 'min'=>'1']) !!}
+                                    {!! Form::number('jumlah_tamu', 1,['id'=>'jumlah_tamu', 'min'=>'1', 'max'=>'5']) !!}
                                     {!! Form::label('jumlah_tamu', 'Jumlah Tamu', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
                             </div>
@@ -50,6 +50,12 @@
                                 <div class="input-field col s12">
                                     {!! Form::select('extra', [1=>'Ya',0=>'Tidak'], 0,['id'=>'extra']) !!}
                                     {!! Form::label('extra', 'Extra Bed') !!}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    {!! Form::number('harga_extra', 0,['id'=>'harga_extra','readonly'=>'', 'min'=>'0']) !!}
+                                    {!! Form::label('harga_extra', 'Harga Extra Bed (per hari)', ['data-error' => 'wrong','data-success'=>'right']) !!}
                                 </div>
                             </div>
                             <div class="row">
@@ -89,7 +95,8 @@
                 type:'POST',
                 data: {_token:_token, no_kamar:no_kamar, extrabed:extrabed},
                 success: function(data) {
-                    $("#total").val(data);
+                    $("#total").val(data.total);
+                    $("#harga_extra").val(data.extra);
                 }
             });
         }
